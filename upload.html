@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/vue/2.3.4/vue.min.js"></script>
+    <!--<script src="https://cdn.bootcss.com/plupload/3.1.0/i18n/zh_CN.js"></script>-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+</head>
+<body>
+<div id="app" style="width: 65%;margin: 50px auto;padding: 30px">
+    <label>token:
+        <input v-model="token">
+    </label>
+    <label>courseId:
+        <input v-model="courseId">
+    </label>
+    <label>二级域名:
+        <input v-model="sld">
+    </label>
+    <ul>
+        <li v-for="file in files">
+            {{file.name}}:{{file.size}}
+        </li>
+    </ul>
+    <button @click="getLecture">选择文件</button>
+</div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data(){
+            return {
+                files: [],
+                token: null,
+                courseId: null,
+                sld: null
+            }
+        },
+        mounted(){
+
+        },
+        methods: {
+            getLecture(){
+                $.ajax({
+                    url: "http://api.123xue.cn/en/course/open",
+                    data: {sld: "nice"},
+                    success(json){
+                        console.log(json)
+                    }
+                })
+            }
+        }
+    })
+</script>
+</html>

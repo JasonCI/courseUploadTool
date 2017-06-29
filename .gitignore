@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Logs
 logs
 *.log
@@ -33,3 +34,7 @@ node_modules
 *.iml
 
 
+=======
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+>>>>>>> Stashed changes
