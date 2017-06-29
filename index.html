@@ -1,0 +1,68 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style/bootstrap.css">
+    <script type="text/javascript" src="script/jquery.js"></script>
+    <script type="text/javascript" src="script/vue.min.js"></script>
+    <script type="text/javascript" src="script/plupload.full.min.js"></script>
+    <script type="text/javascript" src="script/zh_CN.js"></script>
+</head>
+<body>
+<div id="app" style="width: 88%;margin: 20px auto;padding: 10px">
+    <template v-if="!token">
+        <div style="width: 36%;margin: 30px auto">
+            <div class="input-group" style="margin-top:10px ">
+                <span class="input-group-addon" style="width: 23%;">二级域名</span>
+                <input type="text" v-model="sld" class="form-control input-sm">
+            </div>
+            <div class="input-group" style="margin-top:10px ">
+                <span class="input-group-addon" style="width: 23%;">账&nbsp;&nbsp;&nbsp;户</span>
+                <input type="text" v-model="account" class="form-control input-sm">
+            </div>
+            <div class="input-group" style="margin:10px 0">
+                <span class="input-group-addon" style="width: 23%;">密&nbsp;&nbsp;&nbsp;码</span>
+                <input type="password" v-model="pwd" class="form-control input-sm">
+            </div>
+            <div class="input-group" style="margin:10px 0">
+                <span class="input-group-addon" style="width: 23%;">已有凭据</span>
+                <input type="password" v-model="token" class="form-control input-sm">
+            </div>
+            <div class="text-right">
+                <button class="btn btn-block btn-success pull-right" type="button" @click="login">登录</button>
+            </div>
+        </div>
+    </template>
+    <template v-else>
+        <div class="input-group">
+            <span class="input-group-addon">主题ID</span>
+            <input type="text" v-model="courseId" class="form-control" placeholder="courseId">
+        </div>
+        <ul class="list-group" style="margin: 10px 0">
+            <li class="list-group-item" v-for="file in files">
+                <div style="display: flex;margin-bottom:3px;width:100%;">
+                    <div style="flex: 0 0 60%">
+                        <input v-model="file.name" class="form-control" style="border: none">
+                    </div>
+                    <div style="flex: 0 0 20%">
+                        <span v-if="file.lectureId" class="small text-success">内容已创建</span>
+                        {{file.size}}
+                    </div>
+                    <div style="flex: 0 0 5%">{{file.percent}}%</div>
+                    <div>
+                        <span v-if="file.msg=='上传成功'" class="text-success">{{file.msg}}</span>
+                        <span v-else class="text-danger">{{file.msg}}</span>
+                    </div>
+                </div>
+                <textarea class="form-control" rows="1" v-model="file.abstract" placeholder="摘要"></textarea>
+            </li>
+        </ul>
+        <button id="picker" class="btn-group btn btn-sm btn-success">1.选择文件</button>
+        <button class="btn-group btn btn-sm btn-success" @click="saveLecture">2.保存内容</button>
+        <button class="btn-group btn btn-sm btn-success" @click="startUpload">3.上传视频</button>
+        <button class="btn btn-sm btn-default" @click="token=null">返回</button>
+    </template>
+    <div style="cursor: pointer;position: fixed;bottom:6px;right: 10px;font-size: larger" @click="close">&times;</div>
+</div>
+<script type="text/javascript" src="script/app.js"></script>
+</body>
+</html>

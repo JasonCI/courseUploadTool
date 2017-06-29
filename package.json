@@ -1,20 +1,20 @@
 {
-  "name": "upload-course-tool",
-  "version": "1.0.0",
-  "description": "Easily upload courseware tool",
-  "main": "index.js",
-  "scripts": {
-    "test": "node index"
+  "name": "demo",
+  "version": "0.0.1",
+  "main": "index.html",
+  "window": {
+    "title": "upload-video",
+    "width": 1200,
+    "height": 600,
+    "resizable": true,
+    "show_in_taskbar": true,
+    "frame": false,
+    "kiosk": false
   },
-  "keywords": [
-    "upload",
-    "course",
-    "batch"
-  ],
-  "author": "jason",
-  "license": "ISC",
+  "webkit": {
+    "plugin": true
+  },
   "dependencies": {
-    "request": "^2.81.0",
     "url-parse": "^1.1.9"
   }
 }
