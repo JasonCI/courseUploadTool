@@ -3,7 +3,7 @@
  *
  */
 let urlParse = require('url-parse')
-var gui = require("nw.gui");
+let $ = require('jquery')
 
 new Vue({
     el: '#app',
@@ -19,11 +19,13 @@ new Vue({
     },
     mounted(){
         let component = this
-        $(document).ajaxError((event, xhr) => {
-            if (xhr.status === 401) {
-                alert("token过期,请更换")
-                component.token = null
-            }
+        component.$nextTick(() => {
+            $(document).ajaxError((event, xhr) => {
+                if (xhr.status === 401) {
+                    alert("token过期,请更换")
+                    component.token = null
+                }
+            })
         })
     },
     watch: {
@@ -31,6 +33,7 @@ new Vue({
             if (val) {
                 this.$nextTick(() => {
                     this.initUpload()
+                    this.files = []
                 })
             }
         }
@@ -49,7 +52,6 @@ new Vue({
                         {title: "video files", extensions: "flv,avi,mpg,mp4,wmv,3gp,mov,asf"}
                     ]
                 },
-
                 init: {
                     FilesAdded: function (up, files) {
                         console.log(files)
