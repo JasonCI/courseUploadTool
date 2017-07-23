@@ -29,6 +29,9 @@
             <div class="text-right">
                 <button class="btn btn-block btn-success pull-right" type="button" @click="login">登录</button>
             </div>
+
+            <p style="position: fixed;bottom:6px;left: 10px;">平台登录的页面控制台输入
+                JSON.parse(localStorage.getItem('access_token')).id 获取凭据</p>
         </div>
     </template>
     <template v-else>
@@ -40,7 +43,9 @@
             <li class="list-group-item" v-for="file in files" style="padding: 3px">
                 <div style="display: flex;margin-bottom:3px;width:100%;">
                     <div style="flex: 0 0 55%">
-                        <input v-model="file.name" class="form-control" style="border: none;width: 100%">
+                        <input v-model="file.name" class="form-control"
+                               placeholder="____________________________________________________________________________"
+                               style="border: none;width: 100%">
                     </div>
                     <div style="flex: 0 0 20%">
                         <span v-if="file.lectureId" class="small text-success">内容已创建</span>
@@ -53,7 +58,8 @@
                     </div>
                 </div>
                 <textarea style="padding: 0 14px;border: none" class="form-control" rows="1"
-                          v-model="file.abstract"></textarea>
+                          v-model="file.abstract"
+                          placeholder="____________________________________________________________________________"></textarea>
             </li>
         </ul>
         <button id="picker" class="btn-group btn btn-sm btn-success">1.选择文件</button>
@@ -61,7 +67,7 @@
         <button class="btn-group btn btn-sm btn-success" @click="startUpload">3.上传视频</button>
         <button class="btn btn-sm btn-success" @click="token=null">返回</button>
     </template>
-    <div style="cursor: pointer;position: fixed;bottom:6px;right: 10px;font-size: larger" @click="close">&times;</div>
+    <!--<div style="cursor: pointer;position: fixed;bottom:6px;right: 10px;font-size: larger" @click="close">&times;</div>-->
 </div>
 <script type="text/javascript" src="script/app.js"></script>
 </body>
