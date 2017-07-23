@@ -8,13 +8,13 @@
 </head>
 <body>
 <div id="app" style="width: 88%;margin: 20px auto;padding: 10px">
-    <template v-if="!token">
+    <template v-if="!token||!sld">
         <div style="width: 300px;margin: 30px auto">
             <div class="input-group" style="margin-top:10px ">
                 <span class="input-group-addon small" style="width: 30%;">二级域名</span>
-                <input type="text" v-model="sld" class="form-control input-sm">
+                <input type="text" v-model="sld" class="form-control input-sm" placeholder="必填">
             </div>
-            <div class="input-group" style="margin-top:10px ">
+            <div class="input-group" style="margin-top:20px ">
                 <span class="input-group-addon small" style="width: 30%;">账&nbsp;&nbsp;&nbsp;户</span>
                 <input type="text" v-model="account" class="form-control input-sm">
             </div>
@@ -22,19 +22,20 @@
                 <span class="input-group-addon small" style="width: 30%;">密&nbsp;&nbsp;&nbsp;码</span>
                 <input type="password" v-model="pwd" class="form-control input-sm">
             </div>
+            <div class="text-right">
+                <button class="btn btn-block btn-success pull-right" type="button" @click="login">登录</button>
+            </div>
+            <p class="text-center small" style="margin: 10px 0;color: lightgrey">或者</p>
             <div class="input-group" style="margin:10px 0">
                 <span class="input-group-addon small" style="width: 30%;">已有凭据</span>
                 <input type="password" v-model="token" class="form-control input-sm">
-            </div>
-            <div class="text-right">
-                <button class="btn btn-block btn-success pull-right" type="button" @click="login">登录</button>
             </div>
 
             <p style="position: fixed;bottom:6px;left: 10px;">平台登录的页面控制台输入
                 JSON.parse(localStorage.getItem('access_token')).id 获取凭据</p>
         </div>
     </template>
-    <template v-else>
+    <template v-if="token&&sld">
         <div class="input-group">
             <span class="input-group-addon">主题ID</span>
             <input type="text" v-model="courseId" class="form-control">
