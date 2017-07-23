@@ -14,7 +14,7 @@ function createWindow() {
     // 创建浏览器窗口。
     win = new BrowserWindow({
         title: "course tool",
-        frame: false,
+        frame: true,
         width: 900,
         height: 600,
         transparent: true,
