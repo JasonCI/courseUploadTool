@@ -41,11 +41,12 @@
             <input type="text" v-model="courseId" class="form-control">
         </div>
         <ul class="list-group" style="margin: 10px 0">
-            <li class="list-group-item" v-for="file in files" style="padding: 3px">
+            <li class="list-group-item" v-for="(file,index) in files" style="padding: 3px" draggable="true"
+                @dragstart='drag(file, index)' @drop='drop($event,index)' @dragover='allowDrop($event)'>
                 <div style="display: flex;margin-bottom:3px;width:100%;">
                     <div style="flex: 0 0 55%">
-                        <input v-model="file.name" class="form-control"
-                               placeholder="____________________________________________________________________________"
+                        <input v-model="file.name" class="form-control" :disabled="file.lectureId"
+                               placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"
                                style="border: none;width: 100%">
                     </div>
                     <div style="flex: 0 0 20%">
@@ -60,7 +61,7 @@
                 </div>
                 <textarea style="padding: 0 14px;border: none" class="form-control" rows="1"
                           v-model="file.abstract"
-                          placeholder="____________________________________________________________________________"></textarea>
+                          placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"></textarea>
             </li>
         </ul>
         <button id="picker" class="btn-group btn btn-sm btn-success">1.选择文件</button>

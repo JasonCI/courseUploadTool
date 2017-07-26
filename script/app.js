@@ -39,6 +39,19 @@ new Vue({
         }
     },
     methods: {
+        allowDrop(event){
+            event.preventDefault()
+        },
+        drag(item, index){
+            this.item = item
+            this.selectIndex = index
+        },
+        drop(event, to){
+            event.preventDefault()
+            const form = this.files.indexOf(this.item)
+            this.files.splice(form, 1)
+            this.files.splice(to, 0, this.item)
+        },
         selectFile(){
             this.$refs.picker.click()
         },
