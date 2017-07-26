@@ -61,13 +61,15 @@
                 </div>
                 <textarea style="padding: 0 14px;border: none" class="form-control" rows="1"
                           v-model="file.abstract"
-                          placeholder="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"></textarea>
+                          placeholder="摘要:_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"></textarea>
             </li>
         </ul>
-        <button id="picker" class="btn-group btn btn-sm btn-success">1.选择文件</button>
-        <button class="btn-group btn btn-sm btn-success" @click="saveLecture">2.保存内容</button>
-        <button class="btn-group btn btn-sm btn-success" @click="startUpload">3.上传视频</button>
-        <button class="btn btn-sm btn-success" @click="token=null">返回</button>
+        <div>
+            <button id="picker" class="btn-group btn btn-sm btn-success">1.选择文件</button>
+            <button class="btn-group btn btn-sm btn-success" @click="saveLecture">2.保存内容</button>
+            <button class="btn-group btn btn-sm btn-success" @click="startUpload">3.上传视频</button>
+            <button class="btn btn-sm btn-success" @click="token=null">返回</button>
+        </div>
     </template>
     <!--<div style="cursor: pointer;position: fixed;bottom:6px;right: 10px;font-size: larger" @click="close">&times;</div>-->
 </div>
