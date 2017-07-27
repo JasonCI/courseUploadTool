@@ -142,6 +142,7 @@ new Vue({
         saveLecture(){
             let component = this
             this.files.forEach((file) => {
+                setTimeout(3000)
                 if (!file.lectureId) {
                     $.ajax({
                         url: component.processUrl("/en/admin/lecture/save"),
