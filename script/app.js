@@ -141,8 +141,17 @@ new Vue({
         },
         saveLecture(){
             let component = this
-            this.files.forEach((file) => {
-                setTimeout(3000)
+            let count = this.files.length
+            if (!count) {
+                return
+            }
+            let fileQueue = 0
+            this.timeId = setInterval(() => {
+                if (fileQueue >= count) {
+                    clearInterval(this.timeId)
+                    return
+                }
+                let file = this.files[fileQueue]
                 if (!file.lectureId) {
                     $.ajax({
                         url: component.processUrl("/en/admin/lecture/save"),
@@ -165,7 +174,8 @@ new Vue({
                         }
                     })
                 }
-            })
+                fileQueue++
+            }, 500)
         },
         processUrl(url, paras) {
             const apiUrl = `https://api.kuaike.cn${url}`
